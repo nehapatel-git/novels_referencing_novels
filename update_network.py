@@ -70,22 +70,28 @@ if os.path.exists("library.csv"):
 else:
     df = pd.DataFrame(columns = ["source_title", "source_author", "source_year", "ref_title", "ref_author", "ref_year", "notes"])
 
-s_query = input("\nEnter book title to search: ")
-s_title, s_author, s_year = get_book_api(s_query)
+if input("Would you like to add new book to the network? (y/n)") == "y":       
 
-while True:
-    r_query = input(f"\nEnter book referenced in {s_title}: ")
-    r_title, r_author, r_year = get_book_api(r_query)
-    note = input("Enter a sentence to provide some context for this reference: ")
+    s_query = input("\nEnter book title to search: ")
+    s_title, s_author, s_year = get_book_api(s_query)
 
-    new_row = pd.DataFrame([{
-        "source_title":s_title, "source_author":s_author, "source_year":s_year, "ref_title":r_title, "ref_author":r_author, "ref_year":r_year, "notes":note
-    }])
-    
-    df = pd.concat([df, new_row], ignore_index = True)
-    
-    if input(f"Add another reference from {s_title}? (y/n)").lower() != "y":
-        break
+    while True:
+        r_query = input(f"\nEnter book referenced in {s_title}: ")
+        r_title, r_author, r_year = get_book_api(r_query)
+        note = input("Enter a sentence to provide some context for this reference: ")
+
+        new_row = pd.DataFrame([{
+            "source_title":s_title, "source_author":s_author, "source_year":s_year, "ref_title":r_title, "ref_author":r_author, "ref_year":r_year, "notes":note
+        }])
+        
+        df = pd.concat([df, new_row], ignore_index = True)
+        
+        if input(f"Add another reference from {s_title}? (y/n)").lower() != "y":
+            break
+
+else:
+    if input("Would you like to regenerate the network widget? (y/n)") != "y":
+        print("Okay, have a nice day!")
 
 # save the updated dataframe and store it temporarily
 df.to_csv("temp.csv", index=False)

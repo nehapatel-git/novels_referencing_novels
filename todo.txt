@@ -1,2 +1,0 @@
-change author year to click to textbox instead of the hover
-add making a google api key in readme

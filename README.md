@@ -13,7 +13,7 @@ git clone https://github.com/
 cd novels_referencing_novels
 
 # create and activate a virtual environment
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate
 
 # install dependencies
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ### 3. Run the program
 ```bash
-python update_network.py
+./run.sh
 ```
 
 ![Screenshot](https://raw.githubusercontent.com/nehapatel-git/novels_referencing_novels/main/screenshot.png)

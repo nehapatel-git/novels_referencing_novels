@@ -1,9 +1,11 @@
-suppressPackageStartupMessages({
-  library(networkD3)
-  library(tidyverse)
-  library(htmlwidgets)
-  library(webshot2)
-})
+suppressWarnings(
+  suppressPackageStartupMessages({
+    library(networkD3)
+    library(tidyverse)
+    library(htmlwidgets)
+    library(webshot2)
+  })
+)
 
 df <- suppressMessages(read_csv("temp.csv"))
 

@@ -1,13 +1,3 @@
-# issues: google books query returns recent print publications? instead of the original work
-# add a column for format for both source and reference? (to include non-book media?)
-# add a logical column for the reference read or not read
-# add an option to make an .env file if there is no API key found (first use)
-# add requirements.txt
-# comment on code
-# add ability to hover over the points to see info, and makybe click to see quotes/notes?
-# add a way to get the next set of results
-#
-
 import pandas as pd
 import requests
 import os
@@ -75,12 +65,20 @@ def get_book_api(query):
                     selected = results[int(choice) -1]
                     print(f"You selected: {selected['title']} by {selected['author']} ({selected['year']})")
 
-                    if input("Do you want to edit these details? (y/n): ").lower() == "y":
-                        t = input(f"Title [{selected['title']}]: ") or selected['title']
-                        a = input(f"Author [{selected['author']}]: ") or selected['author']
-                        y = input(f"Year [{selected['year']}]: ") or selected['year']
+                    while True:
+                        edit_ask = input("Do you want to edit these details? (y/n)").strip().lower()
+                        
+                        if edit_ask == "y":
+                            t = input(f"Title [{selected['title']}]: ") or selected['title']
+                            a = input(f"Author [{selected['author']}]: ") or selected['author']
+                            y = input(f"Year [{selected['year']}]: ") or selected['year']
 
-                        return t, a, y
+                            return t, a, y
+                        elif edit_ask == "n":
+                            return selected['title'], selected['author'], selected['year']
+                        
+                        else:
+                            print("Invalid input. Please enter 'y' or 'n'.")
                     
                 elif choice == "m" and has_more:
                     start +=5

@@ -39,8 +39,9 @@ network <- forceNetwork(
   charge = -200,
   linkDistance = 100,
   bounded = FALSE,
-  colourScale = JS('d3.scaleOrdinal().domain(["Source", "Reference"]).range(["#C22148", "#21C29A"]);'),
+  colourScale = JS('d3.scaleOrdinal().domain(["Source", "Reference"]).range(["#e3123c","#4326eb"]);'),
   fontSize = 14,
+  opacity = 0.8,
   zoom = TRUE,
   opacityNoHover = 0.9
 )

@@ -40,4 +40,4 @@ pip install -r requirements.txt
 
 [**Open the interactive example**](https://nehapatel-git.github.io/novels_referencing_novels/viz.html)
 
-Some features: zoom, drag nodes, hover over nodes to see citation details, hover over links to see notes on the reference.
+Features: zoom, drag nodes, hover over nodes to see citation details, hover over links to see notes on the reference.
